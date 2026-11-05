@@ -1,0 +1,77 @@
+<section class="head section--flush">
+  <div class="shell" appScrollReveal>
+    <div class="head__content">
+      <span class="eyebrow head__eyebrow">Our Solutions</span>
+      <h1 class="display head__title" appCharacterScramble>Check out our established solutions</h1>
+      <p class="lede">
+        Six products covering the full intelligence cycle â€” collection, fusion, geospatial analysis,
+        video analytics, secure documents, and encrypted communications.
+      </p>
+    </div>
+    <div class="head__visual" aria-hidden="true">
+      <img src="/img/assets/earth-map.png" alt="" />
+    </div>
+  </div>
+</section>
+
+<section class="section section--flush list">
+  <div class="shell">
+    <div class="list__intro" appScrollReveal>
+      <h2 class="h2" appLineReveal>Our products</h2>
+      <p class="lede">Purpose-built solutions for complex intelligence challenges.</p>
+      <span class="list__count mono">{{ products.length.toString().padStart(2, '0') }} SYSTEMS</span>
+    </div>
+    @for (p of products; track p.slug; let i = $index) {
+      <article class="product" [class.product--open]="active() === p.slug" appScrollReveal>
+        <div class="product__visual">
+          <img [src]="p.img" [alt]="p.name + ' interface'" loading="lazy" />
+        </div>
+        <div class="product__content">
+          <span class="product__number mono">{{ (i + 1).toString().padStart(2, '0') }}</span>
+          <div class="product__heading">
+            <h3 class="h3" appCharacterScramble>{{ p.name }}</h3>
+            <span class="pill" [class]="'pill pill--' + p.statusTone">{{ p.status }}</span>
+          </div>
+          <p class="product__category">{{ p.category }}</p>
+          <p class="lede product__copy">{{ p.summary }}</p>
+          <div class="product__details" [class.product__details--open]="active() === p.slug">
+            <p>{{ p.body }}</p>
+          </div>
+          <div class="product__actions">
+            @if (p.ctaHref) {
+              <a class="btn btn--primary" [href]="p.ctaHref" target="_blank" rel="noopener">
+                {{ p.cta }}
+                <span class="arrow">&rarr;</span>
+              </a>
+            } @else {
+              <a class="btn btn--primary" routerLink="/contact">
+                {{ p.cta }}
+                <span class="arrow">&rarr;</span>
+              </a>
+            }
+            <button class="product__more" type="button" (click)="open(p.slug)"
+              [attr.aria-expanded]="active() === p.slug" [attr.aria-label]="(active() === p.slug ? 'Hide' : 'Show') + ' more about ' + p.name">
+              {{ active() === p.slug ? 'Show less' : 'Discover more' }}
+              <span aria-hidden="true">{{ active() === p.slug ? 'âˆ’' : '+' }}</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section section--inset solutions-cta" appScrollReveal>
+  <div class="shell cta">
+    <span class="eyebrow">Work with us</span>
+    <h2 class="h2" appLineReveal>Not sure which solution fits?</h2>
+    <p class="lede">
+      Tell us the problem and we will map it to the right product â€” including turnkey deployments
+      built around your existing infrastructure.
+    </p>
+    <a class="btn btn--primary" routerLink="/contact">
+      Contact our sales team
+      <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+</section>

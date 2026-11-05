@@ -1,0 +1,55 @@
+<footer class="ftr">
+  <div class="shell">
+    <div class="ftr__top-grid">
+      <div class="ftr__brand-col">
+        <img class="ftr__logo" [src]="footer.logo" alt="AIQ" width="100" height="46" />
+        <img class="ftr__copyright-img" [src]="footer.legal" alt="" height="10" />
+      </div>
+
+      <div class="ftr__cols">
+        <div class="ftr__col">
+          <span class="ftr__title">{{ footer.productsTitle }}</span>
+          <ul>
+            @for (link of footer.productsLinks; track link.label) {
+              <li><a [routerLink]="link.route">{{ link.label }}</a></li>
+            }
+          </ul>
+        </div>
+
+        <div class="ftr__col">
+          <span class="ftr__title">{{ footer.contactTitle }}</span>
+          <ul>
+            @for (link of footer.contactLinks; track link.label) {
+              <li><a [routerLink]="link.route">{{ link.label }}</a></li>
+            }
+          </ul>
+        </div>
+
+        <div class="ftr__col">
+          <span class="ftr__title">{{ footer.companyTitle }}</span>
+          <ul>
+            @for (link of footer.companyLinks; track link.label) {
+              <li><a [routerLink]="link.route">{{ link.label }}</a></li>
+            }
+          </ul>
+        </div>
+
+        <div class="ftr__col">
+          <span class="ftr__title">{{ footer.careersTitle }}</span>
+          <ul>
+            @for (link of footer.careersLinks; track link.label) {
+              <li><a [routerLink]="link.route">{{ link.label }}</a></li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ftr__bottom">
+      <div class="ftr__bottom-content">
+        <p class="ftr__bottom-contact">Contact Us <a [href]="'mailto:' + footer.email">{{ footer.email }}</a></p>
+        <p class="ftr__bottom-tagline">{{ footer.blurb }}</p>
+      </div>
+    </div>
+  </div>
+</footer>

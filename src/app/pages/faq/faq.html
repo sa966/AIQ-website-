@@ -1,0 +1,29 @@
+<section class="head section--flush">
+  <div class="shell">
+    <span class="eyebrow">Support</span>
+    <h1 class="display head__title" appCharacterScramble>Frequently asked questions</h1>
+  </div>
+</section>
+
+<section class="section section--flush">
+  <div class="shell">
+    <div class="acc">
+      @for (f of faqs; track f.question; let i = $index) {
+        <div class="acc__item" [class.acc__item--open]="openIndex() === i">
+          <button class="acc__head" type="button" (click)="toggle(i)">
+            <span class="mono acc__idx">{{ (i + 1).toString().padStart(2, '0') }}</span>
+            <span class="acc__q">{{ f.question }}</span>
+            <span class="acc__toggle" aria-hidden="true">
+              {{ openIndex() === i ? '−' : '+' }}
+            </span>
+          </button>
+          <div class="acc__body" [class.acc__body--open]="openIndex() === i">
+            <div class="acc__inner">
+              <p class="muted">{{ f.answer }}</p>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,130 @@
+<section class="head" appScrollReveal>
+  <div class="shell">
+    <span class="eyebrow">Careers</span>
+    <h1 class="display head__title" appCharacterScramble>{{ careers.hero.title }}</h1>
+    <div class="head__foot">
+      <p class="lede">{{ careers.hero.body }}</p>
+      <a class="btn btn--primary" [routerLink]="careers.hero.cta.route">
+        {{ careers.hero.cta.label }}
+        <span class="arrow">&rarr; </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Career slider ─────────────────────────────────────── -->
+<section class="section section--flush" appScrollReveal>
+  <div class="shell">
+    <div class="tabs" role="tablist" aria-label="Life at AIQ">
+      @for (item of careers.tabs; track item.label; let i = $index) {
+        <button
+          class="tab"
+          type="button"
+          role="tab"
+          [attr.aria-selected]="tab() === i"
+          [class.is-active]="tab() === i"
+          (click)="select(i)"
+        >
+          <span class="tab__index">{{ item.index }}</span>
+          <span class="tab__label">{{ item.label }}</span>
+        </button>
+      }
+    </div>
+
+    <div class="cards">
+      @for (card of activeTab().cards; track card.title) {
+        <article class="card card--mist">
+          <h3 class="card__title">{{ card.title }}</h3>
+          <p class="card__body">{{ card.body }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Open Roles Preview ────────────────────────────────── -->
+<section class="section open-roles-preview">
+  <div class="shell">
+    <div class="sect__head" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
+      <div>
+        <span class="eyebrow">Opportunities</span>
+        <h2 class="h2" appLineReveal>Featured Open Roles</h2>
+      </div>
+      <a class="btn btn--primary" routerLink="/roles">View all open roles &rarr;</a>
+    </div>
+
+    <ul class="roles-list" style="display: grid; gap: 16px; list-style: none; padding: 0;">
+      @for (role of roles; track role.slug) {
+        <li>
+          <a class="role" [routerLink]="['/roles', role.slug]" style="display: flex; justify-content: space-between; align-items: center; padding: 24px; background: var(--bg-raised, #f7f7f8); border-radius: var(--radius, 12px); border: 1px solid var(--line, rgba(0,0,0,.12)); text-decoration: none; transition: border-color .2s;">
+            <div>
+              <h3 style="font-size: 1.125rem; font-weight: 500; margin-bottom: 4px; color: var(--ink);">{{ role.title }}</h3>
+              <div style="font-size: 0.875rem; color: var(--ink-muted, #7e7e7e); display: flex; gap: 8px; align-items: center;">
+                <span>{{ role.department }}</span>
+                <span>•</span>
+                <span>{{ role.location }}</span>
+                <span>•</span>
+                <span>{{ role.type }}</span>
+              </div>
+            </div>
+            <span style="font-weight: 500; color: var(--accent, #171752);">View role &rarr;</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ── Interview process ─────────────────────────────────── -->
+<section class="section section--inset process">
+  <div class="shell">
+    <div class="process__head">
+      <span class="eyebrow">{{ careers.process.label }}</span>
+      <h2 class="h2">{{ careers.process.title }}</h2>
+      <p class="lede">{{ careers.process.body }}</p>
+    </div>
+
+    <ol class="steps">
+      @for (step of careers.process.steps; track step.index) {
+        <li class="step">
+          <span class="step__index mono">{{ step.index }}</span>
+          <div>
+            <h3 class="step__title">{{ step.title }}</h3>
+            <p class="step__body">{{ step.body }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- ── Offices ───────────────────────────────────────────── -->
+<section class="section offices">
+  <div class="shell offices__inner">
+    <div>
+      <span class="eyebrow">{{ careers.offices.label }}</span>
+      <h2 class="h2 offices__title">{{ careers.offices.title }}</h2>
+      <p class="lede">{{ careers.offices.body }}</p>
+      <a class="btn btn--primary offices__cta" [routerLink]="careers.offices.cta.route">
+        {{ careers.offices.cta.label }}
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="offices__map" aria-hidden="true">
+      <img src="/img/media/continents-64FDT2JJ.svg" alt="" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ───────────────────────────────────────────────── -->
+<section class="section section--flush">
+  <div class="shell">
+    <div class="cta">
+      <h2 class="h2">{{ careers.cta.title }}</h2>
+      <a class="btn btn--light" [href]="'mailto:' + careers.cta.email">
+        {{ careers.cta.email }}
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>

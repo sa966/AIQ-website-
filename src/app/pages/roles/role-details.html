@@ -1,0 +1,129 @@
+@if (role(); as role) {
+  <section class="page-hero">
+    <div class="shell">
+      <a class="back-link" routerLink="/roles">
+        <span aria-hidden="true">&larr;</span>
+        Go back
+      </a>
+    </div>
+  </section>
+
+  <section class="section section--flush">
+    <div class="shell" style="max-width: 800px; margin: 0 auto; padding-bottom: 120px;">
+      <h1 class="display" style="font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 500; letter-spacing: -0.03em; margin-bottom: 24px; color: var(--ink);">
+        Join AIQ as a {{ role.title }}
+      </h1>
+
+      <div style="font-size: 0.9375rem; color: var(--ink-muted); margin-bottom: 48px; display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid var(--line); padding-bottom: 24px;">
+        <div>Type: {{ role.type }} ({{ role.department }})</div>
+        <div>Location: {{ role.location }}, Nigeria</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 40px; color: var(--ink); line-height: 1.7;">
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.02em;">
+            Build software for complex, real-world challenges
+          </h2>
+          <p style="margin-bottom: 16px; color: var(--ink-muted);">
+            AIQ builds software that helps organizations make better use of complex data. Our products support work across defence and intelligence, geospatial analysis, research, and other demanding environments.
+          </p>
+          <p style="margin-bottom: 16px; color: var(--ink-muted);">
+            As a {{ role.title }} at AIQ, you'll help design, build, and improve the products behind that work. You'll contribute across the software development lifecycle, from understanding a problem and shaping an approach to shipping reliable features and learning from how they're used.
+          </p>
+          <p style="color: var(--ink-muted);">
+            You'll work closely with engineers and colleagues across the company to turn practical needs into useful, dependable software.
+          </p>
+        </div>
+
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.02em;">
+            What you'll do
+          </h2>
+          <ul style="list-style: disc; padding-left: 20px; display: grid; gap: 10px; color: var(--ink-muted);">
+            <li>Design, develop, test, and maintain software across AIQ products.</li>
+            <li>Translate product and user needs into clear technical solutions.</li>
+            <li>Build and improve application features, services, and APIs.</li>
+            <li>Work with data stores and external services to support product functionality.</li>
+            <li>Investigate bugs and performance issues across the software stack.</li>
+            <li>Contribute to code reviews, technical discussions, and engineering practices.</li>
+            <li>Help keep software reliable, maintainable, and secure.</li>
+            <li>Collaborate with teammates to plan, deliver, and improve work.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.02em;">
+            What we're looking for
+          </h2>
+          <ul style="list-style: disc; padding-left: 20px; display: grid; gap: 10px; color: var(--ink-muted);">
+            <li>Experience building software through professional work, personal projects, or relevant study.</li>
+            <li>Proficiency in at least one programming language and a willingness to learn others.</li>
+            <li>A solid understanding of programming fundamentals, data structures, and problem-solving.</li>
+            <li>Familiarity with building or consuming APIs and working with databases.</li>
+            <li>Care for code quality, testing, and the reliability of the software you ship.</li>
+            <li>The ability to communicate technical ideas clearly and work well with others.</li>
+            <li>Curiosity, initiative, and sound judgment when working through unfamiliar problems.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.02em;">
+            Helpful experience
+          </h2>
+          <p style="margin-bottom: 12px; color: var(--ink-muted);">
+            These are useful, but not required:
+          </p>
+          <ul style="list-style: disc; padding-left: 20px; display: grid; gap: 10px; color: var(--ink-muted);">
+            <li>Building data-intensive applications or workflow tools.</li>
+            <li>Working with geospatial data, maps, satellite imagery, or location-based systems.</li>
+            <li>Experience with cloud services, containers, or automated build and deployment workflows.</li>
+            <li>Developing software for government, defence, intelligence, research, or other complex environments.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.02em;">
+            How we work
+          </h2>
+          <p style="color: var(--ink-muted);">
+            We value clear thinking, thoughtful engineering, and taking responsibility for work from idea through delivery. We want people who are open to feedback, ask good questions, and care about building software that is useful in practice.
+          </p>
+        </div>
+
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.02em;">
+            Join AIQ
+          </h2>
+          <ul style="list-style: disc; padding-left: 20px; display: grid; gap: 10px; color: var(--ink-muted);">
+            <li>Flexible scheduling — set your own hours</li>
+            <li>Earn competitive pay per session</li>
+            <li>Zero admin load — we handle bookings, reminders, and platform support</li>
+            <li>Impact-driven work — make a real difference globally</li>
+            <li>A warm, growing community of care professionals</li>
+          </ul>
+        </div>
+
+        <div style="border-top: 1px solid var(--line); padding-top: 32px; margin-top: 16px;">
+          <h2 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 16px; letter-spacing: -0.02em;">
+            How to Apply
+          </h2>
+          <p style="margin-bottom: 24px; color: var(--ink-muted);">
+            If you're interested in building software that helps organizations work through complex challenges, we'd like to hear from you.
+          </p>
+          <a class="btn btn--primary" [href]="applicationHref()" style="display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; background: var(--black); color: #fff; border-radius: var(--radius, 12px); font-weight: 500; text-decoration: none;">
+            Apply for this role
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="page-hero">
+    <div class="shell role-detail__not-found">
+      <span class="mono">Careers</span>
+      <h1 class="display">Role not found</h1>
+      <p class="lede">This role may no longer be available.</p>
+      <a class="btn btn--primary" routerLink="/roles">View open roles</a>
+    </div>
+  </section>
+}

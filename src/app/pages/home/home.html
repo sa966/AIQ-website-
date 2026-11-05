@@ -1,0 +1,238 @@
+<!-- ── Hero (Figma Prototype 5024:2635) ──────────────────── -->
+<section class="hero palantir-obsidian">
+  <div class="hero__bg-wrap" aria-hidden="true">
+    <picture class="hero__bg-picture">
+      <source [srcset]="images.heroBg" media="(prefers-reduced-motion: reduce)" />
+      <img class="hero__bg-img" [src]="images.heroAnim" alt="" />
+    </picture>
+    <div class="hero__bg-overlay"></div>
+  </div>
+  <div class="hero__glow animate-pulse-glow" aria-hidden="true"></div>
+
+  <div class="shell hero__inner">
+    <div class="hero__center">
+      <h1 class="hero__title">
+        @for (line of home.hero.headline; track line) {
+          <span class="hero__title-line">{{ line }}</span>
+        }
+      </h1>
+    </div>
+
+    <div class="hero__bottom">
+      <div class="hero__bottom-sub">
+        <p class="hero__body">
+          {{ home.hero.body }}
+        </p>
+      </div>
+
+      <div class="hero__bottom-card">
+        <a class="hero__card glow-card" routerLink="/company">
+          <div class="hero__card-thumb">
+            <img
+              [src]="images.heroCardThumb"
+              alt="Defence & Intelligence Operations"
+              loading="eager"
+            />
+          </div>
+          <div class="hero__card-content">
+            <p>{{ home.hero.cardBody }}</p>
+            <span class="hero__card-arrow" aria-hidden="true">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Statement ─────────────────────────────────────────── -->
+<section class="section statement" appScrollReveal>
+  <div class="shell">
+    <p class="statement__text" appScrollTextFill>{{ home.statement }}</p>
+  </div>
+</section>
+
+<!-- ── Selected Organizations / Portfolio ───────────────── -->
+<section class="section portfolio-orgs" appScrollReveal>
+  <div class="shell portfolio-orgs__inner">
+    <p class="portfolio-orgs__title">
+      {{ home.portfolio.title }} <span>{{ home.portfolio.titleHighlight }}</span>
+    </p>
+  </div>
+
+  <div class="portfolio-marquee" aria-label="Selected organizations portfolio">
+    <div class="portfolio-marquee__track">
+      @for (org of home.portfolio.orgs; track org.name) {
+        <div class="portfolio-org-item">
+          <img [src]="org.logo" [alt]="org.name" [style.height]="org.height" loading="lazy" />
+        </div>
+      }
+      @for (org of home.portfolio.orgs; track org.name + '-dup') {
+        <div class="portfolio-org-item" aria-hidden="true">
+          <img [src]="org.logo" [alt]="org.name" [style.height]="org.height" loading="lazy" />
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Intro ─────────────────────────────────────────────── -->
+<section class="section intro" appScrollReveal>
+  <div class="shell intro__inner">
+    <span class="eyebrow intro__label">{{ home.whatWeDo.label }}</span>
+    <p class="intro__body">{{ home.whatWeDo.body }}</p>
+  </div>
+</section>
+
+<!-- ── Software (Sticky Card Stacking Effect) ────────────── -->
+<section class="section software-stack-section" appScrollReveal>
+  <div class="shell">
+    <div class="section-header">
+      <span class="eyebrow">{{ home.software.label }}</span>
+      <h2 class="h2" appLineReveal>Our Software</h2>
+    </div>
+
+    <div class="software-stack">
+      @for (p of products; track p.slug; let i = $index) {
+        <article class="stack-card glow-card" [style.--card-index]="i">
+          <div class="stack-card__content">
+            <h3 appCharacterScramble>{{ p.name }}</h3>
+            <p class="stack-card__category">{{ p.category }}</p>
+            <p class="stack-card__body">{{ p.body }}</p>
+            <div class="stack-card__actions">
+              <a class="btn btn--ghost" routerLink="/products" [queryParams]="{ p: p.slug }">
+                Learn More
+              </a>
+              <a class="btn btn--solid-black" routerLink="/contact">
+                Request Demo
+              </a>
+            </div>
+          </div>
+          <div class="stack-card__media">
+            <img [src]="p.img" [alt]="p.name" loading="lazy" />
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Technology Domain ─────────────────────────────────── -->
+<section class="section technology-domain" appScrollReveal>
+  <div class="shell technology-domain__inner">
+    <div class="technology-domain__header">
+      <h2 class="technology-domain__title">{{ home.technology.title }}</h2>
+      <p class="technology-domain__body">{{ home.technology.body }}</p>
+    </div>
+
+    <div class="technology-domain__grid">
+      @for (item of home.technology.items; track item.title; let i = $index) {
+        <article class="technology-domain__card">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.body }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Possibilities ─────────────────────────────────────── -->
+<section class="section possibilities">
+  <div class="shell possibilities__inner">
+    <h2 class="possibilities__title">{{ home.possibilities.title }}</h2>
+    <p class="possibilities__body">{{ home.possibilities.body }}</p>
+    <div class="possibilities__actions">
+      <a class="btn btn--primary" [routerLink]="home.possibilities.primary.route">
+        {{ home.possibilities.primary.label }}
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="btn btn--ghost" [routerLink]="home.possibilities.secondary.route">
+        {{ home.possibilities.secondary.label }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Newsroom ──────────────────────────────────────────── -->
+<section class="section section--flush news">
+  <div class="shell">
+    <div class="news__head">
+      <span class="eyebrow">{{ home.newsroom.label }}</span>
+      <a class="news__all" [routerLink]="home.newsroom.link.route">
+        {{ home.newsroom.link.label }}
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+
+    <ul class="news__list">
+      @for (post of news; track post.title) {
+        <li>
+          <a class="news__row" routerLink="/newsroom">
+            <span class="news__cat">{{ post.category }}</span>
+            <span class="news__title">{{ post.title }}</span>
+            <span class="news__arrow" aria-hidden="true"></span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ── Competitive edge ──────────────────────────────────── -->
+<section class="edge">
+  <div class="shell edge__inner">
+    <div class="edge__copy">
+      <h2 class="edge__title">{{ home.cta.title }}</h2>
+      <p class="edge__body">{{ home.cta.body }}</p>
+    </div>
+
+    <div class="edge__actions">
+      <a class="btn btn--light btn--lg" [routerLink]="home.cta.primary.route">
+        {{ home.cta.primary.label }}
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="btn btn--purple btn--lg" [routerLink]="home.cta.secondary.route">
+        {{ home.cta.secondary.label }}
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ───────────────────────────────────────────────── -->
+<section class="section faq">
+  <div class="shell faq__inner">
+    <h2 class="faq__title">{{ home.faq.title }}</h2>
+
+    <div class="faq__list">
+      @for (item of faqs; track item.question; let i = $index) {
+        <div class="faq__item" [class.is-open]="openFaq() === i">
+          <button
+            class="faq__q"
+            type="button"
+            (click)="toggleFaq(i)"
+            [attr.aria-expanded]="openFaq() === i"
+          >
+            <span>{{ item.question }}</span>
+            <span class="faq__sign" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a">
+            <p>{{ item.answer }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

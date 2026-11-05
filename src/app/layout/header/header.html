@@ -1,0 +1,63 @@
+<header class="hdr" [class.hdr--invert]="overDark() || open()">
+  <div class="shell hdr__inner">
+    <a routerLink="/" class="hdr__mark" (click)="close()" aria-label="AIQ home">
+      <img class="hdr__logo" [src]="images.logo" alt="AIQ" width="78" height="30" />
+    </a>
+
+    <nav class="hdr__pill" aria-label="Main Navigation">
+      @for (item of dock; track item.route) {
+        <a class="hdr__pill-link" [routerLink]="item.route">{{ item.label }}</a>
+      }
+    </nav>
+
+    <div class="hdr__right">
+      <a class="hdr__cta-btn" routerLink="/contact">Get in touch</a>
+
+      <button
+        class="hdr__menu"
+        type="button"
+        (click)="toggle()"
+        [attr.aria-expanded]="open()"
+        aria-controls="primary-menu"
+        aria-label="Toggle menu"
+      >
+        <span class="hdr__menu-label">{{ open() ? 'CLOSE' : 'MENU' }}</span>
+        <span class="hdr__menu-icon" [class.is-open]="open()" aria-hidden="true">
+          <i></i><i></i><i></i><i></i>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="primary-menu" [class.menu--open]="open()" [attr.aria-hidden]="!open()">
+  <div class="shell menu__inner">
+    <nav class="menu__nav" aria-label="Primary">
+      @for (item of menu; track item.route; let i = $index) {
+        <a class="menu__link" [routerLink]="item.route" (click)="close()">
+          <span class="menu__index">0{{ i + 1 }}</span>
+          <span class="menu__label">{{ item.label }}</span>
+          <span class="menu__arrow" aria-hidden="true"></span>
+        </a>
+      }
+    </nav>
+
+    <div class="menu__foot">
+      <a class="menu__mail" [href]="'mailto:' + brand.email">{{ brand.email }}</a>
+      <p class="menu__tagline">{{ brand.tagline }}</p>
+    </div>
+  </div>
+</div>
+
+<nav class="dock" aria-label="Quick links">
+  <div class="dock__cap"></div>
+  <div class="dock__inner">
+    @for (item of dock; track item.route) {
+      <a class="dock__link" [routerLink]="item.route">{{ item.label }}</a>
+    }
+    <a class="dock__cta" routerLink="/contact">
+      Get in touch
+      <span class="dock__dot" aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>

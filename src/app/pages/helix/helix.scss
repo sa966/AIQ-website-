@@ -1,0 +1,430 @@
+.helix-hero {
+  position: relative;
+  padding-top: clamp(120px, 13vw, 190px);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 42% 60% at 75% 42%, rgba(246, 173, 21, 0.1), transparent 75%),
+    radial-gradient(ellipse 55% 75% at 10% 100%, rgba(69, 75, 135, 0.22), transparent 70%),
+    #10111b;
+  color: #fff;
+}
+
+.helix-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.helix-kicker > span {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #f6ad15;
+  box-shadow: 0 0 16px rgba(246, 173, 21, 0.7);
+}
+
+.helix-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+  align-items: center;
+  gap: clamp(40px, 8vw, 120px);
+}
+
+.helix-hero__copy .helix-kicker,
+.helix-cta .helix-kicker {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.helix-hero__copy h1 {
+  max-width: 12ch;
+  margin-top: 18px;
+  font-size: clamp(46px, 6vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.helix-hero__copy h1 em,
+.helix-section-heading h2 em {
+  color: #f6ad15;
+  font-style: normal;
+}
+
+.helix-hero__copy > .lede {
+  max-width: 50ch;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(16px, 1.25vw, 19px);
+}
+
+.helix-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.helix-hero__actions .btn--primary {
+  border-color: #f6ad15;
+  background: #f6ad15;
+  color: #171717;
+}
+
+.helix-hero__actions .btn--primary:hover {
+  border-color: #ffc43d;
+  background: #ffc43d;
+}
+
+.helix-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 8px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.helix-text-link:hover {
+  color: #f6ad15;
+}
+
+.helix-hero__visual {
+  position: relative;
+  display: grid;
+  min-height: 520px;
+  place-items: center;
+}
+
+.helix-hero__halo {
+  position: absolute;
+  width: min(90%, 500px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 32px rgba(255, 255, 255, 0.025),
+    0 0 0 76px rgba(255, 255, 255, 0.018),
+    inset 0 0 90px rgba(246, 173, 21, 0.05);
+}
+
+.helix-hero__visual img {
+  position: relative;
+  z-index: 1;
+  width: min(74%, 350px);
+  max-height: 580px;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.48));
+}
+
+.helix-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-block: clamp(36px, 5vw, 64px);
+  color: #fff;
+}
+
+.helix-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  text-align: center;
+}
+
+.helix-stat + .helix-stat {
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.helix-stat strong {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.helix-stat span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.helix-privacy {
+  background: #f5f4f0;
+}
+
+.helix-section-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 18px 64px;
+  align-items: start;
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.helix-section-heading .eyebrow {
+  grid-column: 1 / -1;
+  font-size: 14px;
+}
+
+.helix-section-heading .helix-kicker {
+  grid-column: 1 / -1;
+}
+
+.helix-section-heading h2 {
+  max-width: 16ch;
+  font-size: clamp(34px, 4.4vw, 62px);
+  letter-spacing: -0.05em;
+}
+
+.helix-section-heading > .lede {
+  max-width: 54ch;
+  color: var(--ink-soft);
+}
+
+.helix-privacy__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.helix-privacy__card {
+  min-height: 220px;
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid rgba(18, 19, 28, 0.1);
+  background: rgba(255, 255, 255, 0.58);
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.helix-privacy__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(246, 173, 21, 0.55);
+  background: #fff;
+}
+
+.helix-privacy__card h3 {
+  margin-top: 34px;
+  font-size: clamp(22px, 2.2vw, 30px);
+}
+
+.helix-privacy__card p {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+.helix-section-heading--split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  align-items: end;
+}
+
+.helix-section-heading--split .eyebrow {
+  grid-column: 1 / -1;
+}
+
+.helix-section-heading--split .helix-kicker {
+  grid-column: 1 / -1;
+}
+
+.helix-capabilities__list {
+  border-top: 1px solid var(--line);
+}
+
+.helix-capability {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 8vw, 120px);
+  padding-block: clamp(32px, 5vw, 64px);
+  border-bottom: 1px solid var(--line);
+}
+
+.helix-capability:nth-child(even) .helix-capability__copy {
+  order: 2;
+}
+
+.helix-capability__copy h3 {
+  margin-top: 18px;
+  font-size: clamp(26px, 3vw, 40px);
+}
+
+.helix-capability__copy p {
+  max-width: 42ch;
+  margin-top: 14px;
+  color: var(--ink-muted);
+}
+
+.helix-capability__image {
+  display: grid;
+  min-height: 360px;
+  max-height: 520px;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at center, rgba(246, 173, 21, 0.12), transparent 64%),
+    #f5f4f0;
+}
+
+.helix-capability__image img {
+  width: min(70%, 300px);
+  height: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.helix-cta {
+  padding-block: clamp(48px, 7vw, 88px);
+  background:
+    radial-gradient(ellipse 55% 130% at 90% 50%, rgba(246, 173, 21, 0.12), transparent 75%),
+    #17172a;
+  color: #fff;
+}
+
+.helix-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.helix-cta h2 {
+  max-width: 16ch;
+  margin-top: 12px;
+  font-size: clamp(34px, 4vw, 56px);
+  letter-spacing: -0.05em;
+}
+
+.helix-cta p {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.helix-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn--helix-light {
+  border: 1px solid #f6ad15;
+  background: #f6ad15;
+  color: #171717;
+}
+
+.btn--helix-light:hover {
+  border-color: #ffc43d;
+  background: #ffc43d;
+}
+
+@media (max-width: 760px) {
+  .helix-hero {
+    padding-top: 108px;
+  }
+
+  .helix-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .helix-hero__copy h1 {
+    max-width: 13ch;
+    font-size: clamp(40px, 10.5vw, 58px);
+  }
+
+  .helix-hero__copy > .lede {
+    margin-top: 18px;
+  }
+
+  .helix-hero__actions,
+  .helix-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .helix-hero__actions .btn,
+  .helix-cta__actions .btn {
+    width: 100%;
+  }
+
+  .helix-hero__visual {
+    min-height: 360px;
+  }
+
+  .helix-hero__visual img {
+    width: min(66%, 260px);
+    max-height: 410px;
+  }
+
+  .helix-stats {
+    padding-block: 28px;
+  }
+
+  .helix-stat {
+    padding-inline: 8px;
+  }
+
+  .helix-stat span {
+    font-size: 12px;
+  }
+
+  .helix-section-heading,
+  .helix-section-heading--split {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .helix-section-heading .eyebrow {
+    grid-column: auto;
+  }
+
+  .helix-section-heading .helix-kicker {
+    grid-column: auto;
+  }
+
+  .helix-privacy__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .helix-privacy__card {
+    min-height: 0;
+  }
+
+  .helix-privacy__card h3 {
+    margin-top: 22px;
+  }
+
+  .helix-capability {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-block: 32px;
+  }
+
+  .helix-capability:nth-child(even) .helix-capability__copy {
+    order: 0;
+  }
+
+  .helix-capability__image {
+    min-height: 320px;
+    max-height: 420px;
+  }
+
+  .helix-capability__image img {
+    width: min(62%, 260px);
+    max-height: 400px;
+  }
+
+  .helix-cta__inner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

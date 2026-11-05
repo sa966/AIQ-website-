@@ -1,0 +1,87 @@
+<section class="head">
+  <div class="shell">
+    <span class="eyebrow">Contact</span>
+    <h1 class="display head__title" appCharacterScramble>{{ contact.hero.title }}</h1>
+    <p class="lede head__body">{{ contact.hero.body }}</p>
+  </div>
+</section>
+
+<!-- ── Intent cards ──────────────────────────────────────── -->
+<section class="section section--flush">
+  <div class="shell">
+    <div class="intents">
+      @for (intent of contact.intents; track intent.title; let i = $index) {
+        <article class="intent">
+          <span class="intent__index mono">0{{ i + 1 }}</span>
+          <h2 class="intent__title">{{ intent.title }}</h2>
+          <p class="intent__body">{{ intent.body }}</p>
+          <span class="intent__arrow" aria-hidden="true"></span>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ── Form ──────────────────────────────────────────────── -->
+<section class="section form">
+  <div class="shell form__inner">
+    <aside class="form__aside">
+      <h2 class="form__title">{{ contact.form.title }}</h2>
+      <p class="lede">{{ contact.form.body }}</p>
+      <div class="form__note">
+        <span class="mono">{{ contact.form.noteLabel }}</span>
+        <span class="form__note-value">{{ contact.form.note }}</span>
+      </div>
+      <a class="form__mail" [href]="'mailto:' + brand.email">{{ brand.email }}</a>
+      <p class="form__addr">{{ brand.location }}</p>
+    </aside>
+
+    <div class="form__panel">
+      @if (sent()) {
+        <div class="done">
+          <h3 class="h3">Your message is ready to send</h3>
+          <p class="muted">
+            We've drafted it in your email client. If nothing opened, write to us directly at
+            <a [href]="'mailto:' + brand.email">{{ brand.email }}</a
+            >.
+          </p>
+          <button class="btn btn--ghost" type="button" (click)="sent.set(false)">
+            Write another
+          </button>
+        </div>
+      } @else {
+        <form (ngSubmit)="submit()">
+          @for (field of contact.form.fields; track field.name) {
+            <label class="field">
+              <span class="visually-hidden">{{ field.label }}</span>
+              @if (field.type === 'textarea') {
+                <textarea
+                  [name]="field.name"
+                  [placeholder]="field.placeholder"
+                  [ngModel]="value(field.name)"
+                  (ngModelChange)="set(field.name, $event)"
+                  rows="3"
+                  required
+                ></textarea>
+              } @else {
+                <input
+                  [type]="field.type"
+                  [name]="field.name"
+                  [placeholder]="field.placeholder"
+                  [ngModel]="value(field.name)"
+                  (ngModelChange)="set(field.name, $event)"
+                  required
+                />
+              }
+            </label>
+          }
+
+          <button class="btn btn--primary form__submit" type="submit">
+            {{ contact.form.submit }}
+            <span class="arrow">&rarr;</span>
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+</section>

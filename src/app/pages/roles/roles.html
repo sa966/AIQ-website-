@@ -1,0 +1,80 @@
+<section class="page-hero">
+  <div class="shell">
+    <span class="mono">Careers</span>
+    <h1 class="display" appCharacterScramble>Open Roles</h1>
+    <p class="lede">Join AIQ in building software for Africa's most critical challenges.</p>
+  </div>
+</section>
+
+<section class="section section--flush">
+  <div class="shell">
+    <div class="controls">
+      <label class="search">
+        <input
+          type="search"
+          aria-label="Search open roles"
+          placeholder="Search for roles"
+          [value]="query()"
+          (input)="onQuery($event)"
+        />
+      </label>
+
+      <select
+        class="select"
+        aria-label="Filter roles by department"
+        [value]="department()"
+        (change)="onDepartment($event)"
+      >
+        @for (dept of departments; track dept) {
+          <option [value]="dept">{{ dept }}</option>
+        }
+      </select>
+
+      <select
+        class="select"
+        aria-label="Filter roles by employment type"
+        [value]="type()"
+        (change)="onType($event)"
+      >
+        @for (item of types; track item) {
+          <option [value]="item">{{ item }}</option>
+        }
+      </select>
+
+      <a class="btn btn--primary" routerLink="/careers">Back to Careers</a>
+    </div>
+
+    <div class="roles-head">
+      <h2 class="h3">Open roles</h2>
+      <span class="mono" aria-live="polite">{{ filtered().length }} open</span>
+    </div>
+
+    <ul class="roles-list">
+      @for (role of filtered(); track role.slug) {
+        <li>
+          <a class="role" [routerLink]="['/roles', role.slug]">
+            <div>
+              <h3 class="role__title">{{ role.title }}</h3>
+              <div class="role__meta">
+                <span>{{ role.department }}</span>
+                <span>•</span>
+                <span>{{ role.location }}</span>
+                <span>•</span>
+                <span>{{ role.type }}</span>
+              </div>
+            </div>
+            <span class="role__cta">
+              View role
+              <span class="arrow">&rarr;</span>
+            </span>
+          </a>
+        </li>
+      } @empty {
+        <li class="roles-empty">
+          <h3 class="h3">No roles match your filters</h3>
+          <p>Try a different search or select another department or employment type.</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,80 @@
+<section class="head section--flush">
+  <div class="shell head__inner" appScrollReveal>
+    <div class="head__content">
+      <span class="eyebrow">{{ company.hero.label }}</span>
+      <h1 class="display head__title" appCharacterScramble>{{ company.hero.title }}</h1>
+      <p class="lede head__body">{{ company.hero.body }}</p>
+    </div>
+    <div class="head__shot" aria-hidden="true">
+      <img [src]="company.hero.img" alt="AIQ operational coverage map" />
+    </div>
+  </div>
+</section>
+
+<section class="company-purpose company-purpose--mission" appScrollReveal>
+  <div class="company-purpose__inner">
+    <h2>{{ company.mission.title }}</h2>
+    <p>{{ company.mission.body }}</p>
+  </div>
+</section>
+
+<section class="company-purpose company-purpose--strategic" appScrollReveal>
+  <div class="company-purpose__inner">
+    <h2>{{ company.strategic.title }}</h2>
+    <p>{{ company.strategic.body }}</p>
+  </div>
+</section>
+
+<section class="company-purpose company-purpose--direction" appScrollReveal>
+  <div class="company-purpose__inner">
+    <h2>{{ company.direction.title }}</h2>
+    <p>{{ company.direction.body }}</p>
+  </div>
+</section>
+
+<section class="section company-principles">
+  <div class="shell">
+    <div class="sect__head">
+      <span class="eyebrow">Our Core Principles</span>
+      <h2 class="h2" appLineReveal>How we work</h2>
+      <span class="sect__index mono">01 — 04 / OPERATING PRINCIPLES</span>
+    </div>
+
+    <div class="intro">
+      <p class="lede">{{ company.principlesIntro }}</p>
+    </div>
+
+    <div class="grid grid--4 princ">
+      @for (p of company.principles; track p.name) {
+        <div class="princ__cell glow-card">
+          <div class="princ__letter-wrap">
+            <span class="princ__letter">{{ p.letter }}</span>
+          </div>
+          <h3 class="h3">{{ p.name }}</h3>
+          <p class="princ__gloss">{{ p.gloss }}</p>
+          <p class="princ__body">{{ p.body }}</p>
+          <div class="princ__watermark" aria-hidden="true">
+            <img src="/img/assets/icons/search.svg" alt="" />
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--inset cta">
+  <div class="shell cta__inner">
+    <h2 class="h2" appLineReveal>Work with us</h2>
+    <p class="lede">
+      We are AIQ — your go-to company for bespoke and turnkey solutions in the defence and
+      intelligence industry.
+    </p>
+    <div class="cta__actions">
+      <a class="btn btn--primary" routerLink="/careers">
+        See open roles
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a class="btn btn--ghost" routerLink="/contact">Get in Touch</a>
+    </div>
+  </div>
+</section>

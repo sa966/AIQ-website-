@@ -1,0 +1,110 @@
+<section class="geo-hero">
+  <div class="shell geo-hero__intro" appScrollReveal>
+    <div class="geo-hero__heading">
+      <span class="eyebrow">GeoAI Tools</span>
+      <h1 class="display" appCharacterScramble>
+        Geospatial Intelligence Artificial Intelligence Software
+      </h1>
+    </div>
+    <p class="lede">
+      GeoAI Tools provides an intuitive interface for extracting valuable insights from
+      geospatial data. Analyze satellite imagery to identify geographic features and understand
+      spatial patterns over time.
+    </p>
+  </div>
+  <div class="geo-hero__image" aria-label="Satellite imagery analyzed with GeoAI Tools">
+    <img [src]="images.product.geoAi" alt="Satellite map imagery with geospatial annotations" />
+  </div>
+</section>
+
+<section class="section geo-features" appScrollReveal>
+  <div class="shell">
+    <div class="geo-features__intro">
+      <h2 class="h2">See more in every image.</h2>
+      <p class="muted">
+        GeoAI Tools helps you extract valuable insight from satellite imagery and turn complex
+        geographic data into information you can use.
+      </p>
+    </div>
+
+    <div class="geo-features__content">
+      <figure class="geo-features__visual">
+        <img [src]="images.earth" alt="Geospatial map of Africa" loading="lazy" />
+        <figcaption>
+          A clearer view of the ground
+          <span>
+            GeoAI Tools helps organizations make better use of geospatial data by turning satellite
+            imagery into information they can examine and apply.
+          </span>
+        </figcaption>
+      </figure>
+
+      <div class="geo-features__list">
+        @for (feature of features; track feature.title) {
+          <article class="geo-feature">
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.body }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section geo-faq" appScrollReveal>
+  <div class="shell geo-faq__inner">
+    <div class="geo-faq__heading">
+      <h2 class="h3">Frequently Asked Questions</h2>
+      <p>Got a specific question? <a routerLink="/contact">Contact us</a></p>
+    </div>
+    <div class="geo-faq__list">
+      @for (faq of faqs; track faq.question; let i = $index) {
+        <article class="geo-faq__item" [class.is-open]="openFaq() === i">
+          <button
+            type="button"
+            class="geo-faq__question"
+            (click)="toggleFaq(i)"
+            [attr.aria-expanded]="openFaq() === i"
+          >
+            <span>{{ faq.question }}</span>
+            <span aria-hidden="true">{{ openFaq() === i ? '−' : '+' }}</span>
+          </button>
+          @if (openFaq() === i) {
+            <p class="geo-faq__answer">{{ faq.answer }}</p>
+          }
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section geo-use-cases" appScrollReveal>
+  <div class="shell geo-use-cases__inner">
+    <div class="geo-use-cases__heading">
+      <h2 class="h2">Geospatial insight for your organisation.</h2>
+      <p>Discover how GeoAI Tools can support teams working with satellite imagery and location data.</p>
+    </div>
+    <ul class="geo-use-cases__list">
+      @for (useCase of useCases; track useCase) {
+        <li>
+          <span>{{ useCase }}</span>
+          <span aria-hidden="true">→</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="geo-pricing" appScrollReveal>
+  <div class="shell geo-pricing__inner">
+    <span class="eyebrow">Pricing</span>
+    <h2 class="h2">Find the right setup for your team.</h2>
+    <p>
+      Tell us about your imagery, workflows, and requirements. Our team can help you explore the
+      right GeoAI Tools solution.
+    </p>
+    <a class="btn btn--primary" routerLink="/products">
+      Request for Demo <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,100 @@
+<section class="helix-hero">
+  <div class="shell helix-hero__inner" appScrollReveal>
+    <div class="helix-hero__copy">
+      <span class="helix-kicker"><span></span> Private messaging, built on trust</span>
+      <h1 class="display" appCharacterScramble>
+        Conversations that <em>belong</em> to you.
+      </h1>
+      <p class="lede">
+        Helix is an end-to-end encrypted messenger for chat, voice notes, push-to-talk, groups,
+        and voice and video calls — free, ad-free, and yours alone.
+      </p>
+      <div class="helix-hero__actions">
+        <a class="btn btn--primary" href="https://helix.aiq.ng/" target="_blank" rel="noopener">
+          Get Helix <span aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="helix-text-link" href="#helix-features">
+          See it in action <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+    <div class="helix-hero__visual">
+      <div class="helix-hero__halo" aria-hidden="true"></div>
+      <img [src]="images.product.helixWelcome" alt="Helix messaging app welcome screen" />
+    </div>
+  </div>
+  <div class="shell helix-stats" aria-label="Helix privacy commitments">
+    @for (principle of principles; track principle.label) {
+      <div class="helix-stat">
+        <strong>{{ principle.value }}</strong>
+        <span>{{ principle.label }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section helix-privacy" appScrollReveal>
+  <div class="shell">
+    <div class="helix-section-heading">
+      <span class="helix-kicker"><span></span> Privacy first</span>
+      <h2 class="h2">We designed it so there’s <em>nothing to leak.</em></h2>
+      <p class="lede">
+        Private by architecture, not just by policy. Helix puts your conversations and choices
+        first, with less data collected and more control in your hands.
+      </p>
+    </div>
+    <div class="helix-privacy__grid">
+      @for (feature of privacyFeatures; track feature.title; let i = $index) {
+        <article class="helix-privacy__card">
+          <span class="mono">0{{ i + 1 }}</span>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.body }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section helix-capabilities" id="helix-features" appScrollReveal>
+  <div class="shell">
+    <div class="helix-section-heading helix-section-heading--split">
+      <div>
+        <span class="helix-kicker"><span></span> Everything you’d expect</span>
+        <h2 class="h2">A messenger that <em>moves with you.</em></h2>
+      </div>
+      <p class="lede">
+        Familiar where it helps, thoughtful where it matters. The tools for everyday conversations
+        are all together in Helix.
+      </p>
+    </div>
+    <div class="helix-capabilities__list">
+      @for (capability of capabilities; track capability.title; let i = $index) {
+        <article class="helix-capability">
+          <div class="helix-capability__copy">
+            <span class="mono">0{{ i + 1 }}</span>
+            <h3>{{ capability.title }}</h3>
+            <p>{{ capability.body }}</p>
+          </div>
+          <div class="helix-capability__image">
+            <img [src]="capability.image" [alt]="capability.alt" loading="lazy" />
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="helix-cta" appScrollReveal>
+  <div class="shell helix-cta__inner">
+    <div>
+      <span class="helix-kicker"><span></span> Free, ad-free, yours</span>
+      <h2 class="h2">Your next conversation starts now.</h2>
+      <p>Get Helix on iOS or Android. Sign in with your number and start talking.</p>
+    </div>
+    <div class="helix-cta__actions">
+      <a class="btn btn--helix-light" href="https://helix.aiq.ng/" target="_blank" rel="noopener">
+        Get Helix <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>

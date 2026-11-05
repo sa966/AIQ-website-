@@ -1,0 +1,77 @@
+<section class="page-hero">
+  <div class="shell">
+    <h1 class="display" appCharacterScramble>Newsroom</h1>
+    <p class="lede">
+      Announcements, partnerships and product news from AIQ
+    </p>
+  </div>
+</section>
+
+<!-- Featured Posts Grid -->
+<section class="section section--flush featured-news">
+  <div class="shell">
+    <div class="featured-grid">
+      @for (post of news.slice(0, 9); track post.title + $index) {
+        <article class="featured-card glow-card">
+          <div class="featured-card__media">
+            <img [src]="post.img" [alt]="post.title" loading="lazy" />
+          </div>
+          <div class="featured-card__content">
+            <div class="featured-card__meta">
+              <span>{{ post.category }}</span>
+              <span>{{ post.date }}</span>
+            </div>
+            <h3 class="featured-card__title">{{ post.title }}</h3>
+            <p class="featured-card__excerpt">{{ post.excerpt }}</p>
+            <a class="featured-card__link" routerLink="/newsroom">
+              Read more <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- All Posts Section -->
+<section class="section all-posts-section">
+  <div class="shell">
+    <div class="all-posts__header">
+      <h2 class="h2">All posts</h2>
+      <div class="search-box">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" placeholder="Search" />
+      </div>
+    </div>
+
+    <ul class="posts-list">
+      @for (post of news; track post.title + $index) {
+        <li class="post-row">
+          <div class="post-row__thumb">
+            <img [src]="post.img" [alt]="post.title" loading="lazy" />
+          </div>
+          <div class="post-row__copy">
+            <h3 class="post-row__title">{{ post.title }}</h3>
+            <p class="post-row__excerpt">{{ post.excerpt }}</p>
+          </div>
+          <div class="post-row__date">
+            {{ post.date }}
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section section--flush">
+  <div class="shell subscribe">
+    <div>
+      <h2 class="h3" appLineReveal>Get the next update first.</h2>
+      <p class="lede">No noise. Occasional notes on what we're shipping and learning.</p>
+    </div>
+    <a class="btn btn--primary" routerLink="/contact">
+      Get in touch
+      <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
